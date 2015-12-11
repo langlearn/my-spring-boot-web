@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="zh-CN">
 <head>
-	<script type="text/javascript" src="welcome.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="jquery/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
+	<h1>你好，世界！</h1>
 	Date: ${time?date}
 	<br>
 	Time: ${time?time}
 	<br>
 	Message: ${message}
 </body>
-
 </html>
