@@ -12,7 +12,7 @@ import java.util.Map;
 @Controller
 public class WelcomeController {
 
-    @RequestMapping("/welcome.do")
+    @RequestMapping("/welcome")
     String welcome(Map<String,Object> modal){
         modal.put("message","hello,world");
         modal.put("time",new Date());
