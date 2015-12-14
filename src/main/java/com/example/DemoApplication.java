@@ -1,5 +1,6 @@
 package com.example;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
@@ -11,6 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import javax.sql.DataSource;
 
 @SpringBootApplication
 public class DemoApplication extends WebMvcConfigurerAdapter {
@@ -28,6 +31,9 @@ public class DemoApplication extends WebMvcConfigurerAdapter {
     @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
     protected static class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 
+        @Autowired
+        private DataSource dataSource;
+
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             http
@@ -38,8 +44,8 @@ public class DemoApplication extends WebMvcConfigurerAdapter {
                     .anyRequest().authenticated()
                     .and()
                     .formLogin()
-                    .loginPage("/login")
-                    .permitAll()
+                    /*.loginPage("/login")
+                    .permitAll()*/
                     .and()
                     .httpBasic();
 
@@ -48,8 +54,7 @@ public class DemoApplication extends WebMvcConfigurerAdapter {
 
         @Override
         public void configure(AuthenticationManagerBuilder auth) throws Exception {
-            auth.inMemoryAuthentication()
-                    .withUser("user").password("password").roles("USER");
+            auth.jdbcAuthentication().dataSource(dataSource);
         }
 
     }
