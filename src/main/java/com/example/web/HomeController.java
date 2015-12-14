@@ -15,4 +15,9 @@ public class HomeController {
     String home() {
         return "home,world";
     }
+
+    @RequestMapping("/admin/main")
+    String admin(){
+        return "admin-main";
+    }
 }
