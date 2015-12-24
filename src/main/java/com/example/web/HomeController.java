@@ -20,4 +20,9 @@ public class HomeController {
     String admin(){
         return "admin-main";
     }
+
+    @RequestMapping("session/user")
+    String sessionUser(){
+        return "session-user";
+    }
 }
