@@ -49,8 +49,8 @@ public class DemoApplication extends WebMvcConfigurerAdapter {
                     /*.loginPage("/login")
                     .permitAll()*/
                     .and()
+                    .rememberMe().and()
                     .httpBasic();
-
 
         }
 
